@@ -16,8 +16,12 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public int total() {
         int total = userList.stream()
+                .filter(e->e.getBalance() > 1000)
                 .mapToInt(e->e.getBalance())
                 .sum();
+        if (total == 0) {
+            throw new IllegalStateException();
+        }
         return total;
     }
 }
