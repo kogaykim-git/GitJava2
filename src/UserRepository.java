@@ -11,7 +11,7 @@ public interface UserRepository {
     /**
      * Метод total находит общую сумму балансов всех юзеров
      * @return total
-     * @author Kogay
+     * @author Kogay Kostya
      * @version 1.0
      */
     int total();
