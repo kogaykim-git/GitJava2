@@ -12,4 +12,12 @@ public class UserRepositoryImpl implements UserRepository{
                 .orElseThrow(()-> new IllegalArgumentException ("user not found by id"));
         return user;
     }
+
+    @Override
+    public int total() {
+        int total = userList.stream()
+                .mapToInt(e->e.getBalance())
+                .sum();
+        return total;
+    }
 }

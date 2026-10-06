@@ -7,4 +7,12 @@ public interface UserRepository {
      * @version 1.0
      */
     User findById(int id);
+
+    /**
+     * Метод total находит общую сумму балансов всех юзеров
+     * @return total
+     * @author Kogay
+     * @version 1.0
+     */
+    int total();
 }
