@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,5 +24,13 @@ public class UserRepositoryImpl implements UserRepository{
             throw new IllegalStateException();
         }
         return total;
+    }
+
+    @Override
+    public User findMax() {
+        User maxUser = userList.stream()
+                .max(Comparator.comparingInt(e-> e.getBalance()))
+                .orElseThrow(()-> new UserNotFoundException("Max user not found"));
+        return maxUser;
     }
 }

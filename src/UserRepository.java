@@ -15,4 +15,6 @@ public interface UserRepository {
      * @version 1.0
      */
     int total();
+
+    User findMax();
 }
