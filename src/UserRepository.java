@@ -16,5 +16,10 @@ public interface UserRepository {
      */
     int total();
 
+    /**
+     * Метод findMax находит User с максимальным balance и возвращает этого User
+     * @return User
+     * @author Kogay Kostya
+     */
     User findMax();
 }
