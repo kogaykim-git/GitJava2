@@ -22,4 +22,20 @@ public interface UserRepository {
      * @author Kogay Kostya
      */
     User findMax();
+
+    /**
+     * Метод findMin находит User с минимальным balance и возвращает этого User
+     * @return User
+     * @author Kogay Kostya
+     */
+    User findMin();
+
+    /**
+     * Метод findTotal находит общую сумму balance User-ов в диапазоне аргументов
+     * @param min минимальный аргумент
+     * @param max максимальный аргумент
+     * @return User
+     * @author Kogay Kostya
+     */
+    int findTotal(int min, int max);
 }
