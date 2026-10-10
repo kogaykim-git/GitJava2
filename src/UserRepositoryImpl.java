@@ -2,23 +2,23 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
     private List<User> userList;
 
     @Override
     public User findById(int id) {
         User user = userList.stream()
-                .filter(e-> e.getId() == id)
+                .filter(e -> e.getId() == id)
                 .findFirst()
-                .orElseThrow(()-> new IllegalArgumentException ("user not found by id"));
+                .orElseThrow(() -> new IllegalArgumentException("user not found by id"));
         return user;
     }
 
     @Override
     public int total() {
         int total = userList.stream()
-                .filter(e->e.getBalance() > 1000)
-                .mapToInt(e->e.getBalance())
+                .filter(e -> e.getBalance() > 1000)
+                .mapToInt(e -> e.getBalance())
                 .sum();
         if (total == 0) {
             throw new IllegalStateException();
@@ -29,8 +29,25 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public User findMax() {
         User maxUser = userList.stream()
-                .max(Comparator.comparingInt(e-> e.getBalance()))
-                .orElseThrow(()-> new UserNotFoundException("Max user not found"));
+                .max(Comparator.comparingInt(e -> e.getBalance()))
+                .orElseThrow(() -> new UserNotFoundException("Max user not found"));
         return maxUser;
+    }
+
+    @Override
+    public User findMin() {
+        User minUser = userList.stream()
+                .min(Comparator.comparingInt(e -> e.getBalance()))
+                .orElseThrow(() -> new UserNotFoundException("Min user not found"));
+        return minUser;
+    }
+
+    @Override
+    public int findTotal(int min, int max) {
+        int total = userList.stream()
+                .filter(e -> e.getBalance() > min && e.getBalance() < max)
+                .mapToInt(e -> e.getBalance())
+                .sum();
+        return total;
     }
 }
