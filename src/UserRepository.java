@@ -38,4 +38,12 @@ public interface UserRepository {
      * @author Kogaykim
      */
     int findTotal(int min, int max);
+
+    /**
+     * Метод findUser находит User по имени из аргумента
+     * @param user
+     * @return User
+     * @author Kogaykim
+     */
+    User findByUser(User user);
 }
