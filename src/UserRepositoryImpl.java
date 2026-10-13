@@ -50,4 +50,13 @@ public class UserRepositoryImpl implements UserRepository {
                 .sum();
         return total;
     }
+
+    @Override
+    public User findByUser(User user) {
+        User findUser = userList.stream()
+                .filter(e -> e.getName().equals(user.getName()))
+                .findFirst()
+                .orElseThrow(() -> new UserNotFoundException("User not found by - " + user.getName()));
+        return findUser;
+    }
 }
