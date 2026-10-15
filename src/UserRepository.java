@@ -46,4 +46,11 @@ public interface UserRepository {
      * @author Kogaykim
      */
     User findByUser(User user);
+
+    /**
+     * Метод minMaxSum нахождения суммы балансов минимального баланса юзера и максимального из списка
+     * @return int
+     * @author KogayKostya
+     */
+    int minMaxSum();
 }
