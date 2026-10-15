@@ -59,4 +59,17 @@ public class UserRepositoryImpl implements UserRepository {
                 .orElseThrow(() -> new UserNotFoundException("User not found by - " + user.getName()));
         return findUser;
     }
+
+    @Override
+    public int minMaxSum() {
+       User minUser = userList.stream()
+                .min(Comparator.comparingInt(e->e.getBalance()))
+                .orElseThrow(() -> new UserNotFoundException("Min user not found"));
+       User maxUser = userList.stream()
+               .max(Comparator.comparingInt(e-> e.getBalance()))
+               .orElseThrow(() -> new UserNotFoundException("Max user not found"));
+       int sum = minUser.getBalance() + maxUser.getBalance();
+        System.out.println(sum);
+        return sum;
+    }
 }
